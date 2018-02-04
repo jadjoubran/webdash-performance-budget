@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+
+<dom-module id="webdash-performance-budget">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+
+    performance budget
+  </template>
+
+  <script>
+    /**
+     * `webdash-performance-budget`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class WebdashPerformanceBudget extends Polymer.Element {
+      static get is() { return 'webdash-performance-budget'; }
+
+      ready() {
+        super.ready();
+
+        
+      }
+    }
+
+    window.customElements.define(WebdashPerformanceBudget.is, WebdashPerformanceBudget);
+  </script>
+</dom-module>
