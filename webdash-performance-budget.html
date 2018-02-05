@@ -1,5 +1,6 @@
 <link rel="import" href="../polymer/polymer-element.html">
-<link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="/bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
 
 <dom-module id="webdash-performance-budget">
   <template>
@@ -7,11 +8,29 @@
       :host {
         display: block;
       }
-    </style>
 
-    performance budget
+      #plugin {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .circles-text {
+        font-size: 60px !important;
+      }
+    </style>
+    <div id="plugin">
+      <template is="dom-if" if="{{limitReached}}">
+      <iron-icon icon="warning"></iron-icon>
+      </template>
+      <div class="circle" id="chart"></div>
+    </div>
+
   </template>
 
+  <script src="bower_components/circles-el/circles.min.js"></script>
   <script>
     /**
      * `webdash-performance-budget`
@@ -27,7 +46,54 @@
       ready() {
         super.ready();
 
-        
+        this.backend = new Backend('webdash-performance-budget');
+
+        this._drawChart();
+      }
+
+      _drawChart() {
+        this.backend.get('js-size')
+          .then(data => {
+            if (!data || !data.size){
+              return false;
+            }
+            const value = data.size;
+
+            let limit = window.webdashConfig.jsBudgetLimit || 200;
+
+            let maxValue = limit * 1024;
+            let limitReached = false;
+            if (value > limit * 1024){
+              maxValue = value;
+              limitReached = true;
+            }
+            this.limitReached = limitReached;  
+            var myCircle = Circles.create({
+              el: this.$.chart,
+              radius: 110,
+              value,
+              maxValue,
+              width: 10,
+              colors: ['rgba(255, 255, 255, 0.5)', 'rgba(255, 255, 255, 0.9)'],
+              duration: 200,
+              wrpClass: 'circles-wrp',
+              textClass: 'circles-text',
+              valueStrokeClass: 'circles-valueStroke',
+              maxValueStrokeClass: 'circles-maxValueStroke',
+              styleWrapper: true,
+              styleText: true,
+              text: (value) => {
+                if (value >= (1024 * 1024)) {
+                  return `${Math.round(value / 1024 / 1024)} MB`;
+                }
+                if (value >= 1024){
+                  return `${Math.round(value / 1024)} KB`;
+                }
+                return `${value} B`;
+              }
+            });
+          })
+          .catch(console.error);
       }
     }
 
