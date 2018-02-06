@@ -4,7 +4,7 @@ module.exports = {
     routes: {
         get: {
             'js-size': async (req, res) => {
-                const config = req.app.locals.getConfig();
+                const config = req.app.locals.config;
 
                 const pattern = config.jsBudgetPath || "./dist/*.min.js";
 
