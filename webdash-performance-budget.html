@@ -10,6 +10,8 @@
       }
 
       #plugin {
+        margin-top: 25px;
+        margin-bottom: 25px;
         width: 100%;
         height: 100%;
         display: flex;
@@ -18,12 +20,17 @@
       }
 
       .circles-text {
-        font-size: 60px !important;
+        font-size: 48px !important;
+      }
+
+      .limit-reached {
+        position: absolute;
+        margin-top: -50px;
       }
     </style>
     <div id="plugin">
       <template is="dom-if" if="{{limitReached}}">
-      <iron-icon icon="warning"></iron-icon>
+        <iron-icon icon="warning" class="limit-reached"></iron-icon>
       </template>
       <div class="circle" id="chart"></div>
     </div>
@@ -54,7 +61,7 @@
       _drawChart() {
         this.backend.get('js-size')
           .then(data => {
-            if (!data || !data.size){
+            if (!data || !data.size) {
               return false;
             }
             const value = data.size;
@@ -63,11 +70,11 @@
 
             let maxValue = limit * 1024;
             let limitReached = false;
-            if (value > limit * 1024){
+            if (value > limit * 1024) {
               maxValue = value;
               limitReached = true;
             }
-            this.limitReached = limitReached;  
+            this.limitReached = limitReached;
             var myCircle = Circles.create({
               el: this.$.chart,
               radius: 110,
@@ -86,7 +93,7 @@
                 if (value >= (1024 * 1024)) {
                   return `${Math.round(value / 1024 / 1024)} MB`;
                 }
-                if (value >= 1024){
+                if (value >= 1024) {
                   return `${Math.round(value / 1024)} KB`;
                 }
                 return `${value} B`;
