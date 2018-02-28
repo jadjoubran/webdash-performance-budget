@@ -26,6 +26,7 @@
       .limit-reached {
         position: absolute;
         margin-top: -50px;
+        color: var(--danger);
       }
     </style>
     <div id="plugin">
@@ -41,7 +42,7 @@
   <script>
     /**
      * `webdash-performance-budget`
-     * 
+     *
      *
      * @customElement
      * @polymer
@@ -54,6 +55,8 @@
         super.ready();
 
         this.backend = new Backend('webdash-performance-budget');
+
+        this.accent = getComputedStyle(this).getPropertyValue('--accent');
 
         this._drawChart();
       }
@@ -81,7 +84,7 @@
               value,
               maxValue,
               width: 10,
-              colors: ['rgba(255, 255, 255, 0.5)', 'rgba(255, 255, 255, 0.9)'],
+              colors: ['rgba(255, 255, 255, 0.5)', this.accent],
               duration: 200,
               wrpClass: 'circles-wrp',
               textClass: 'circles-text',
