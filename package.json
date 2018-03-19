@@ -6,6 +6,9 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "*"
+  ],
   "dependencies": {
     "glob": "^7.1.2"
   },
@@ -18,7 +21,7 @@
     "url": "git+https://github.com/jadjoubran/webdash-performance-budget.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jad Joubran",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jadjoubran/webdash-performance-budget/issues"
