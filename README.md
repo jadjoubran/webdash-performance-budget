@@ -1,21 +1,18 @@
-# \<webdash-performance-budget\>
+# Webdash Performance Budget
 
+![Performance budget preview](https://i.imgur.com/vkkVUdl.png)
 
-
-## Install the Polymer-CLI
-
-First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
-
-## Viewing Your Element
-
-```
-$ polymer serve
+```bash
+npm install --save-dev webdash-performance-budget
 ```
 
-## Running Tests
+## Features
 
-```
-$ polymer test
-```
+* Keep track of your budget
+* Customize your budget
+* Get warned when you exceed your budget
 
-Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
+
+## Enjoying webdash?
+
+Say Hi on Twitter: [@JoubranJad](https://twitter.com/JoubranJad)
