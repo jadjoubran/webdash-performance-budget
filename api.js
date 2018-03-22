@@ -6,7 +6,7 @@ module.exports = {
             'js-size': async (req, res) => {
                 const config = req.app.locals.config;
 
-                const pattern = config.jsBudgetPath || "./dist/*.min.js";
+                const pattern = config.jsBudgetPath || "./dist/*.js";
 
                 const g = glob(pattern, { stat: true }, (er, files) => { });
 
