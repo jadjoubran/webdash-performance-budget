@@ -1,16 +1,19 @@
 # Webdash Performance Budget
 
-![Performance budget preview](https://i.imgur.com/vkkVUdl.png)
+Monitor the total size of your production JavaScript files to maintain fast performance.
 
 ```bash
 npm install --save-dev webdash-performance-budget
 ```
 
+![Performance budget preview](https://i.imgur.com/vkkVUdl.png)
+
+
 ## Features
 
-* Keep track of your budget
+* Keep track of your performance budget
 * Customize your budget
-* Get warned when you exceed your budget
+* Get warned when you exceed the limit
 
 ## Configuration
 
