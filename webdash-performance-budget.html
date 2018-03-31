@@ -1,6 +1,7 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <link rel="import" href="/bower_components/paper-spinner/paper-spinner.html">
 <link rel="import" href="/bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="/bower_components/empty-state-webdash/empty-state-webdash.html">
 
 <script src="/bower_components/circles-el/circles.min.js"></script>
 
@@ -30,22 +31,6 @@
         margin-top: -50px;
         color: var(--danger);
       }
-
-      #empty-state {
-        text-align: center;
-        padding: 20px 40px;
-        max-width: 400px;
-        line-height: 1.8;
-      }
-
-      #empty-state h4 {
-        margin-bottom: 0;
-      }
-
-      #empty-state p {
-        margin-top: 10px;
-        opacity: 0.7;
-      }
     </style>
     <div id="plugin">
       <template is="dom-if" if="{{limitReached}}">
@@ -53,12 +38,9 @@
       </template>
       <div class="circle" id="chart"></div>
       <template is="dom-if" if="{{emptyState}}">
-        <div id="empty-state">
-          <h4>No JavaScript files found</h4>
-          <p>
+        <empty-state-webdash title="No JavaScript files found">
             Adjust the <strong>jsBudgetPath</strong> option in your webdash.json configuration file.
-          </p>
-        </div>
+        </empty-state-webdash>
       </template>
     </div>
 
