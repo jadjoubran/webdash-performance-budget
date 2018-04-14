@@ -14,7 +14,8 @@
     "*.json"
   ],
   "dependencies": {
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "gzipped": "0.0.5"
   },
   "devDependencies": {},
   "scripts": {

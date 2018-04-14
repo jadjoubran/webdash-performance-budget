@@ -39,7 +39,8 @@
       <div class="circle" id="chart"></div>
       <template is="dom-if" if="{{emptyState}}">
         <empty-state-webdash title="No JavaScript files found">
-            Adjust the <strong>jsBudgetPath</strong> option in your webdash.json configuration file.
+          Adjust the
+          <strong>jsBudgetPath</strong> option in your webdash.json configuration file.
         </empty-state-webdash>
       </template>
     </div>
@@ -65,6 +66,7 @@
 
         this.accent = getComputedStyle(this).getPropertyValue('--accent');
 
+        // this.backend.get('gzipped').then(console.log);
         this._drawChart();
       }
 
